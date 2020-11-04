@@ -1,14 +1,28 @@
+__author__ = 'kakaggarwal'
+
 import sys
 
 
 def solution(N, A):
     counters = [0] * N
+    maxCounter = 0
+    currMax = 0
 
     for opr in A:
-        if 1 <= opr and opr <= N:
+        if opr <= N:
+            if maxCounter > counters[opr - 1]:
+                counters[opr - 1] = maxCounter
+
             counters[opr - 1] += 1
-        elif opr == N + 1:
-            counters = [max(counters)] * N
+
+            if counters[opr - 1] > currMax:
+                currMax = counters[opr - 1]
+        else:
+            maxCounter = currMax
+
+    for i in range(N):
+        if maxCounter > counters[i]:
+            counters[i] = maxCounter
 
     return counters
 
