@@ -4,32 +4,18 @@ def solution(A):
 
     if maxNum < 1:
         return 1
-    elif maxNum == len(allNums):
-        return maxNum + 1
 
-    allNumsArr = list(allNums)
-    allNumsArr.sort()
+    checkArr = [False] * (len(allNums) + 1)
 
-    first = 0
-    end = len(allNumsArr)
-    inc = int(end / 10)
+    for num in allNums:
+        if 0 < num <= (len(allNums)):
+            checkArr[num - 1] = True
 
-    while inc > 0:
-        while first < end:
-            if first + 1 != allNumsArr[first]:
-                end = first
-                first -= inc
-                break
-            else:
-                first += inc
+    for i in range(len(checkArr)):
+        if checkArr[i] == False:
+            return i + 1
 
-        inc = int(end / 10)
-
-    while first < end:
-        if first + 1 != allNumsArr[first]:
-            return first + 1
-        else:
-            first += 1
+    return len(checkArr) + 1
 
 
 print(solution([-1000000, 1000000, 1, 4, 2, 3, 5]))
