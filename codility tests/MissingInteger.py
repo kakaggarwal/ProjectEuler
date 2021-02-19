@@ -1,18 +1,21 @@
-import sys
-
 def solution(A):
-    nums = set(A)
-    maxNum = max(nums)
+    allNums = set(A)
+    maxNum = max(allNums)
 
-    if maxNum = len(nums):
-        return maxNum + 1
-    elif maxNum < 1:
+    if maxNum < 1:
         return 1
-    
-    
 
-    return A
+    checkArr = [False] * (len(allNums) + 1)
 
-print(solution([1, 3, 6, 4, 1, 2]))
-print(solution([1, 2, 3]))
-print(solution([-1, -3]))
+    for num in allNums:
+        if 0 < num <= (len(allNums)):
+            checkArr[num - 1] = True
+
+    for i in range(len(checkArr)):
+        if checkArr[i] == False:
+            return i + 1
+
+    return len(checkArr) + 1
+
+
+print(solution([-1000000, 1000000, 1, 4, 2, 3, 5]))
