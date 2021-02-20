@@ -8,7 +8,7 @@ def oddNumber(n):
 
     while divisor <= int(n ** 0.5):
         if n % divisor == 0:
-            n = int(n / divisor)
+            n = n // divisor
             divisor = 3
         else:
             divisor += 2
