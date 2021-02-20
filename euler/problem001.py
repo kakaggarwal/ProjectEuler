@@ -2,14 +2,13 @@
 
 import sys
 
-def getMultiplesSum(n):
-    sum = 0
+def getMultiplesSum(n, val):
+    d = n // val
 
-    for num in range(n - 1, 2, -1):
-        if num % 3 == 0 or num % 5 == 0:
-            sum = sum + num
-    
-    return sum
+    return ((1 + d) * d * val) // 2
+
+def euler(n):
+    return getMultiplesSum(n, 3) + getMultiplesSum(n, 5) - getMultiplesSum(n, 15)
 
 
 t = int(input().strip())
@@ -17,4 +16,4 @@ t = int(input().strip())
 for a0 in range(t):
     n = int(input().strip())
 
-    print(getMultiplesSum(n))
+    print(euler(n - 1))
